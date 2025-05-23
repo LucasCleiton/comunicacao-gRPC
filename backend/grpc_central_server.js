@@ -107,22 +107,3 @@ function main() {
 
 main();
 
-// Exemplo de como você poderia acionar um comando manualmente (fora do escopo da demo para simplificar)
-/*
-setTimeout(() => {
-    // Isso simularia a central enviando um comando para um veículo específico
-    // Por exemplo, via um painel de controle admin ou outra lógica
-    const veiculoParaComandar = 'veiculo_01'; // Altere para o ID do veículo desejado
-    const stream = veiculoStreams.get(veiculoParaComandar);
-    if (stream) {
-        const comando = {
-            id_veiculo: veiculoParaComandar,
-            mensagem: 'Redirecionar para Rua Principal, 123'
-        };
-        stream.write(comando);
-        console.log(`[Central gRPC] Comando manual enviado para ${veiculoParaComandar}: ${comando.mensagem}`);
-    } else {
-        console.warn(`[Central gRPC] Veículo ${veiculoParaComandar} não está conectado.`);
-    }
-}, 20000); // Tenta enviar um comando após 20 segundos
-*/

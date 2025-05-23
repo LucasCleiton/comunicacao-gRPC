@@ -41,15 +41,18 @@ call.on('error', err => {
 });
 
 // Simula enviar localização a cada 3 segundos
-let lat = -23.55 + Math.random() * 0.01;
-let lng = -46.63 + Math.random() * 0.01;
+let lat = -8.113684 + Math.random() * 0.01;
+let lng = -35.030864 + Math.random() * 0.01;
 let velocidade = 50 + Math.random() * 20;
 
+//-23.55 , 46.63
+//-8.113684, -35.030864
 setInterval(() => {
     // Simula movimento
     lat += (Math.random() - 0.5) * 0.0005; // Pequenas variações de lat
     lng += (Math.random() - 0.5) * 0.0005; // Pequenas variações de lng
-    velocidade = 40 + Math.random() * 40; // Varia entre 40 e 80 km/h
+    //velocidade = 40 + Math.random() * 40; // Varia entre 40 e 80 km/h
+    velocidade = 85 + Math.random() * 10; // varia entre 85 a 90 km/h
 
     const localizacao = {
         id: veiculoId,
