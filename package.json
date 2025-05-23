@@ -1,0 +1,22 @@
+{
+    "name": "gestao-frota-grpc",
+    "version": "1.0.0",
+    "description": "Projeto de gestão de frota com gRPC",
+    "main": "index.js",
+    "scripts": {
+        "start:grpc-server": "node backend/grpc_central_server.js",
+        "start:backend": "node backend/backend.js",
+        "start:veiculo1": "node vehicle_simulators/veiculo_client.js veiculo_01",
+        "start:veiculo2": "node vehicle_simulators/veiculo_client.js veiculo_02",
+        "start:veiculo3": "node vehicle_simulators/veiculo_client.js veiculo_03",
+        "start:veiculo4": "node vehicle_simulators/veiculo_client.js veiculo_04",
+        "start:frontend": "npm start --prefix frontend",
+        "start:all": "concurrently \"npm run start:grpc-server\" \"npm run start:backend\" \"npm run start:veiculo1\" \"npm run start:veiculo2\" \"npm run start:veiculo3\" \"npm run start:veiculo4\" \"npm run start:frontend\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    }
+}

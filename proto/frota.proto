@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package frota;
+
+import "google/protobuf/empty.proto"; // Importa o tipo Empty
+
+service Rastreamento {
+  // Streaming Bidirecional: Veículo envia localização, Central envia comandos
+  rpc Monitorar (stream LocalizacaoVeiculo) returns (stream ComandoCentral);
+  // Novo método unário para o backend HTTP consultar as localizações
+  rpc ListarLocalizacoes (google.protobuf.Empty) returns (ListaLocalizacoes);
+}
+
+service Estimativa {
+  // Unário: Cliente solicita estimativa, Servidor retorna
+  rpc Calcular (RequisicaoEstimativa) returns (EstimativaResposta);
+}
+
+message LocalizacaoVeiculo {
+  string id = 1;
+  double lat = 2;
+  double lng = 3;
+  double velocidade = 4;
+  string status = 5;
+}
+
+message ComandoCentral {
+  string id_veiculo = 1;
+  string mensagem = 2; // Ex: "reduzir velocidade", "mudar rota"
+}
+
+message RequisicaoEstimativa {
+  string id_veiculo = 1;
+  string destino = 2;
+}
+
+message EstimativaResposta {
+  string tempo_estimado = 1;
+}
+
+message ListaLocalizacoes {
+  repeated LocalizacaoVeiculo veiculos = 1;
+}
